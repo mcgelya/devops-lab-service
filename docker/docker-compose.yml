@@ -3,7 +3,7 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile
-    image: devops-lab-service
+    image: ${APP_IMAGE:-devops-lab-service}
     ports:
       - "8000:8000"
 

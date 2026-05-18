@@ -52,4 +52,4 @@ jobs:
             git pull
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
             APP_IMAGE="${{ env.IMAGE_NAME }}:${{ github.sha }}" docker compose -f docker/docker-compose.yml pull app
-            APP_IMAGE="${{ env.IMAGE_NAME }}:${{ github.sha }}" docker compose -f docker/docker-compose.yml up -d --no-build
+            APP_IMAGE="${{ env.IMAGE_NAME }}:${{ github.sha }}" GRAFANA_ADMIN_PASSWORD="${{ secrets.GRAFANA_ADMIN_PASSWORD }}" docker compose -f docker/docker-compose.yml up -d --no-build
